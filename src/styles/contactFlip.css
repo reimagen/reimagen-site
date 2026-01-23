@@ -1,0 +1,33 @@
+.contact-flip-container {
+  perspective: 2000px;
+}
+
+.contact-flip-inner {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.contact-flip-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.contact-flip-face {
+  position: relative;
+  width: 100%;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.contact-flip-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

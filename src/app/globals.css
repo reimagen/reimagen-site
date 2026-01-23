@@ -1,26 +1,190 @@
+/* stylelint-disable at-rule-no-unknown */
+@config "../../tailwind.config.js";
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Basic global styling */
+body {
+  background-color: black;
+  color: white;
+  min-height: 100vh;
+  font-family: var(--font-arimo), sans-serif;
+  margin: 0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer components {
+  .brand-card {
+    @apply relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-xl flex flex-col gap-3 p-6 shadow-[0_8px_32px_rgba(0,0,0,0.35)] transition-transform duration-200 ease-out hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.45)];
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  .brand-card-home {
+    @apply bg-black/40 border border-white/10 backdrop-blur;
+  }
+
+  .brand-card-compact {
+    @apply relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-xl flex flex-col gap-2 p-4 min-w-[260px] max-w-sm shadow-[0_8px_32px_rgba(0,0,0,0.35)];
+  }
+
+  .brand-scroll-row {
+    @apply flex gap-4 overflow-x-auto pb-2;
+  }
+
+  .brand-section-kicker {
+    @apply text-sm uppercase tracking-[0.25em];
+  }
+  .brand-section-subhead {
+    @apply text-sm uppercase tracking-[0.1em];
+  }
+
+  .brand-cta {
+    @apply px-4 py-2 rounded-full tracking-[0.08em] uppercase;
+  }
+
+  .brand-cta-sm {
+    @apply inline-flex items-center justify-center px-3 py-2 rounded-full text-sm uppercase;
+  }
+
+  .brand-pill-inactive {
+    @apply bg-gray-800 text-gray-200 border-gray-700 hover:bg-gray-700;
+  }
+
+  .brand-pill {
+    @apply px-3 py-1 rounded-full text-sm uppercase border transition;
+  }
+
+  .brand-social-icon {
+    @apply w-6 h-6 text-white transform transition-transform duration-200 ease-out hover:scale-150;
+  }
+
+  .hero-flip-card {
+    opacity: 0;
+    transform: perspective(1200px) rotateX(18deg) translateY(32px);
+    transform-origin: bottom;
+    transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .hero-flip-card.is-visible {
+    opacity: 1;
+    transform: perspective(1200px) rotateX(0deg) translateY(0);
+  }
+
+  .card-enter {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+
+  .card-enter.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .brand-hero-chip {
+    @apply text-sm uppercase tracking-[0.15em] text-center mb-4;
+  }
+
+  .brand-input {
+    @apply ps-4 pe-6 py-2 rounded-full bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-brand-lavender transition;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.slide-in-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.slide-in-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.6s ease, transform 0.2s ease-out;
+}
+
+.slide-in-right.is-visible:hover,
+.card-enter.is-visible:hover {
+  transform: translateY(-4px);
+}
+
+.card-enter.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.45s ease, transform 0.2s ease-out;
+}
+
+.route-fade {
+  animation: routeFade 0.45s ease both;
+}
+
+@keyframes routeFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-fade {
+    animation: none;
+  }
+}
+
+/* Subtle dark scrollbar for horizontal carousels */
+  .products-scroll {
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #4b5563 #020617;
+  }
+
+.products-scroll::-webkit-scrollbar {
+  height: 6px; /* horizontal scrollbar height */
+}
+
+.products-scroll::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+.products-scroll::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, #4b5563 40%, transparent);
+  border-radius: 9999px;
+}
+
+  .scrollbar-lavender {
+    scrollbar-color: color-mix(in srgb, #FAD7F8 50%, transparent) #020617;
+  }
+
+  .scrollbar-lavender::-webkit-scrollbar-track {
+    background: #020617;
+  }
+
+.scrollbar-lavender::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, #FAD7F8 50%, transparent);
+}
+
+.dot-scroll {
+  scrollbar-width: none;
+}
+
+.dot-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.products-scroll-compact {
+  scrollbar-width: none;
+}
+
+.products-scroll-compact::-webkit-scrollbar {
+  display: none;
 }
