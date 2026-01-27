@@ -36,7 +36,7 @@ const galleryItems = [
     alt: "A Woman Stands Still as New York City Taxis and Pedestrians Buzz Past",
     caption: "Stillness in New York City",
     model: "Meta AI Vibes",
-    poster: "/assets/infinity-lightart.jpg",
+    poster: "/assets/nyc-timelapse.jpg",
   },
   {
     order: 3,
