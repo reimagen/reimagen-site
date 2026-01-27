@@ -559,20 +559,20 @@ vercel
 
 ---
 
-## Success Criteria
+## Status & Remaining Work
 
-Migration is successful when:
+### ✅ Completed
+- Local dev testing (pages, navigation, interactivity)
+- Build + static export checks (`out/` created, routes exported)
+- Static HTML verification (page source includes content)
+- Metadata + JSON-LD presence verified in HTML
+- Vercel deployment created (new project deployed)
 
-1. ✅ All 7 pages render correctly with same functionality
-2. ✅ All interactive features work (carousel, form, animations)
-3. ✅ Static HTML files in `/out/` contain full pre-rendered content
-4. ✅ View source shows meta tags and schema.org markup
-5. ✅ AI crawlers can read site content (test with Claude/GPT)
-6. ✅ Lighthouse SEO score is 100
-7. ✅ No console errors in production
-8. ✅ Mobile and desktop responsive design intact
-9. ✅ Vercel deployment successful
-10. ✅ Contact form submits successfully
+### ⏳ Remaining
+- SEO tool audits (Rich Results, Open Graph Debugger, Lighthouse)
+- AI crawlability: confirm "Who We Work With" section in HTML and Claude test
+- Production verification on custom domain (load, view source, devices, console, logs)
+- Post-deploy checks (sitemap submission, analytics, external links, production form test)
 
 ---
 
@@ -587,62 +587,6 @@ Once migration is stable:
 5. **API Route**: Migrate contact form to Next.js API route for better control
 6. **Sitemap**: Use next-sitemap package for automated sitemap generation
 7. **Performance**: Monitor Core Web Vitals, optimize LCP/CLS/FID
-
----
-
-## MIGRATION STATUS - 95% COMPLETE (Build Testing Phase)
-
-### ✅ COMPLETED
-- Setup & Configuration: Next.js project created with `output: 'export'`
-- Tailwind config merged with brand colors
-- Assets migrated (videos, images to public folder)
-- Global styles migrated (globals.css)
-- Root layout created with metadata and schema.org JSON-LD
-- All 7 page routes created:
-  - `/` (home) ✅
-  - `/about` ✅
-  - `/contact` ✅
-  - `/gallery` ✅
-  - `/products` ✅
-  - `/toolkit` ✅
-  - `/not-found` ✅
-- Navbar adapted for Next.js routing (Link → next/link)
-- Page layouts with custom metadata for each route
-- All components copied to new project
-
-### ✅ FIXED
-- ✅ Footer.jsx - Added `'use client'` directive
-- ✅ BuilderSection.jsx, ExplorerSection.jsx, VibeSection.jsx - Updated to use next/link
-- ✅ Removed all react-router-dom imports from components
-
-### ✅ FINAL BLOCKER RESOLVED (Tailwind v4 CSS @apply issue)
-**Status**: 100% complete - build passes and pages render
-
-**Fixes Applied**:
-- Tailwind v4 entrypoint updated to `@import "tailwindcss";` with `@config "../../tailwind.config.js";`
-- Tailwind `content` globs expanded to `./src/**/*.{js,jsx,ts,tsx,mdx}`
-- Removed custom class `products-scroll` from `@apply` (Tailwind only allows utility classes there)
-- Toolkit CTA links fixed to use `href` for Next.js Link components
-- Added `metadataBase: new URL("https://www.reimagen.ai")` to remove Next.js metadata warning
-
-### 📋 QUICK COMPLETION PATH
-1. Run build: `npm run build`
-2. Test: `npx serve out`
-3. Deploy to Vercel
-
-**Expected Result After Fix**:
-- ✅ Static HTML export in `/out` folder
-- ✅ All 7 pages pre-rendered as HTML
-- ✅ Fully crawlable by AI (Claude, GPT, etc.)
-- ✅ Ready to deploy
-
-**Smoke Check**:
-- `npx serve out` and verified all navbar routes load in the static export
-
-### ✅ READY TO SWAP CHECKLIST
-- ✅ Next.js build passes (`npm run build`)
-- ✅ Static export works (`npx serve out`)
-- ✅ All navbar routes load
 - ✅ Metadata warning resolved (`metadataBase` set)
 - ✅ Tailwind v4 working with @apply
 - ⬜ Swap directories (keep current project as rollback as Reimagen-Website-backup)

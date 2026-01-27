@@ -25,14 +25,14 @@ export const builderCategories = [
     items: [
       {
         name: 'Claude Code',
-        description: 'Claude continues to deliver the strongest performance across context management, reasoning quality, and task execution. Worth the $.',
+        description: 'Claude continues to deliver the strongest performance across context management, reasoning quality, and task execution. Worth the $ for Plan Mode alone.',
         link: 'https://www.claude.com/product/claude-code',
         note: 'Paid subscription required',
       },
       {
         name: 'Codex',
         description:
-          'Codes while you sleep. Combo CLI with web version inside ChatGPT to run everything from bug work to deep reasoning tasks. Returns up to four versions, well before you wake up.',
+          'Codes while you sleep. Combo CLI with Code Review inside GitHub to run everything from debugging to deep reasoning tasks. Returns up to four versions, well before you wake up.',
         link: 'https://platform.openai.com/',
         note: 'Paid subscription required',
       },
@@ -56,6 +56,11 @@ export const builderCategories = [
         name: 'LangChain + LangGraph',
         description: 'Non-Google alternative chaining tools and models. Consider writing your own wrapper for simpler use cases.',
         link: 'https://langchain.com/',
+      },
+      {
+        name: 'n8n',
+        description: 'It\'s JSON blobs, and heavy. But it gives non-technical teams nice visuals and the power to automate and iterate before you build formal systems.',
+        link: 'https://n8n.io/',
       },
     ],
   },
