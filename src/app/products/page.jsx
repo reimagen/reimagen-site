@@ -151,9 +151,9 @@ export default function Products() {
       {
         title: "FitnessAI",
         description: "Set your goals and log workouts. Let AI analyze your progress and generate workout plans. In-depth charts for progressive overload, imbalance detection, and calorie burn. It's like having AI Tableau for your workout data.",
-        link: "https://studio--fitnessai-tsi8w.us-central1.hosted.app/signin",
+        link: "https://fitnessai-prod--fitnessai-prod.us-central1.hosted.app/",
         image: fitnessRecap,
-        tools: ["Gemini", "Genkit", "Firebase Studio"],
+        tools: ["Gemini", "Genkit", "Firebase Studio", "Antigravity", "Cursor", "Codex", "Claude Code"],
         stack: ["Next.js (React)", "TypeScript", "Firebase Auth + Firestore"],
       },
       {
@@ -409,139 +409,139 @@ export default function Products() {
   return (
     <div className="pt-24">
       <section className="relative overflow-hidden pb-48">
-      <video
-        src="/videos/creation-of-robot.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        poster={creationRobotPoster}
-        className="fixed inset-0 w-full h-full object-cover brightness-100 md:scale-100 scale-[1.05]"
-      />
-      <div className="fixed inset-0 bg-black/70" aria-hidden="true" />
-
-      <div className="relative z-10 flex flex-col px-4 py-16 md:px-10 lg:px-16">
-        <HeroIntro
-          title="Products"
-          subhead="A roundup of Public Apps, Agents, and Custom GPTs"
-          titleClass="text-3xl mb-1 tracking-[0.15em] uppercase text-center"
-          subheadClass="brand-section-subhead text-brand-lavender text-sm"
-          wrapperClass="mb-8 text-center flex flex-col items-center space-y-2"
-          titleAs="h2"
-          subheadAs="p"
+        <video
+          src="/videos/creation-of-robot.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster={creationRobotPoster}
+          className="fixed inset-0 w-full h-full object-cover brightness-100 md:scale-100 scale-[1.05]"
         />
+        <div className="fixed inset-0 bg-black/70" aria-hidden="true" />
 
-        {/* Navigation for Products Carousel */}
-        <div className="mb-6 flex justify-center px-4 md:px-0">
-          <CarouselNavigationButtons
-            onPrev={handlePrevProduct}
-            onNext={handleNextProduct}
-            isVisible={visibleProducts.length > 0}
-            ariaLabelPrev="Previous product"
-            ariaLabelNext="Next product"
+        <div className="relative z-10 flex flex-col px-4 py-16 md:px-10 lg:px-16">
+          <HeroIntro
+            title="Products"
+            subhead="A roundup of Public Apps, Agents, and Custom GPTs"
+            titleClass="text-3xl mb-1 tracking-[0.15em] uppercase text-center"
+            subheadClass="brand-section-subhead text-brand-lavender text-sm"
+            wrapperClass="mb-8 text-center flex flex-col items-center space-y-2"
+            titleAs="h2"
+            subheadAs="p"
           />
-        </div>
 
-        {/* Horizontal carousel */}
-        <div
-          className="overflow-x-auto pb-6 pt-2 products-scroll scrollbar-lavender products-scroll-compact dot-scroll"
-          ref={productScrollRef}
-        >
-          <div className="flex gap-4 snap-x snap-mandatory">
-            {visibleProducts.map((product, index) => (
-              <ProductCard
-                key={`${product.title}-${index}`}
-                product={product}
-                index={index}
-                categoryStyles={categoryStyles}
-                isDesktop={isDesktop}
-              />
-            ))}
-          </div>
-        </div>
-        {visibleProducts.length > 1 && (
-          <div className="flex justify-center gap-2 mt-4">
-            {visibleProducts.map((_, index) => (
-              <button
-                key={`product-dot-${index}`}
-                type="button"
-                className={`h-2 rounded-full transition-all duration-300 ${index === activeProductIndex ? 'w-8 bg-brand-lavender' : 'w-2 bg-white/30'
-                  }`}
-                aria-label={`Go to product card ${index + 1}`}
-                onClick={() => scrollToProductIndex(index)}
-              />
-            ))}
-          </div>
-        )}
-        <div className="flex justify-center mt-8">
-          <Link href="/contact" className="brand-cta text-sm bg-brand-lavender hover:bg-brand-lavender-dark text-black px-6 py-3 rounded-full">
-            Get Dev Help →
-          </Link>
-        </div>
-        <section className="mb-8">
-          <h3 className="text-3xl mt-12 mb-1 tracking-[0.15em] uppercase text-center">Custom GPTs</h3>
-          <p className="brand-section-subhead text-brand-lavender text-sm text-center mt-4">
-            [ Requires ChatGPT Account ]
-          </p>
-
-          <div className="flex justify-center mt-6">
+          {/* Navigation for Products Carousel */}
+          <div className="mb-6 flex justify-center px-4 md:px-0">
             <CarouselNavigationButtons
-              onPrev={handlePrevGpt}
-              onNext={handleNextGpt}
-              isVisible={gptProducts.length > 0}
-              ariaLabelPrev="Previous GPT card"
-              ariaLabelNext="Next GPT card"
+              onPrev={handlePrevProduct}
+              onNext={handleNextProduct}
+              isVisible={visibleProducts.length > 0}
+              ariaLabelPrev="Previous product"
+              ariaLabelNext="Next product"
             />
           </div>
+
+          {/* Horizontal carousel */}
           <div
-            className="overflow-x-auto pb-4 pt-2 products-scroll scrollbar-lavender dot-scroll mt-8"
-            ref={gptScrollRef}
+            className="overflow-x-auto pb-6 pt-2 products-scroll scrollbar-lavender products-scroll-compact dot-scroll"
+            ref={productScrollRef}
           >
             <div className="flex gap-4 snap-x snap-mandatory">
-              {gptProducts.map((product, index) => (
-                <div
-                  key={`gpt-${product.title}-${index}`}
-                  className="brand-card min-w-[260px] max-w-xs text-white snap-center flex-shrink-0"
-                  data-gpt-card
-                >
-                  <div className="p-4 flex flex-col flex-grow">
-                    <h4 className="text-lg font-semibold mb-2 text-brand-lavender">{product.title}</h4>
-                    <p className="text-sm text-gray-300 mb-4 flex-grow">
-                      {product.description}
-                    </p>
-                    <a
-                      href={product.link}
-                      className="brand-cta-sm bg-brand-lavender hover:bg-brand-lavender-dark text-black"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Start Chat →
-                    </a>
-                  </div>
-                </div>
+              {visibleProducts.map((product, index) => (
+                <ProductCard
+                  key={`${product.title}-${index}`}
+                  product={product}
+                  index={index}
+                  categoryStyles={categoryStyles}
+                  isDesktop={isDesktop}
+                />
               ))}
             </div>
           </div>
-          <div className="flex justify-center gap-2 mt-6">
-            {gptProducts.map((_, index) => (
-              <button
-                key={`gpt-dot-${index}`}
-                type="button"
-                className={`h-2 rounded-full transition-all duration-300 ${index === activeGptIndex ? 'w-8 bg-brand-lavender' : 'w-2 bg-white/30'
-                  }`}
-                aria-label={`Go to GPT card ${index + 1}`}
-                onClick={() => scrollToGptIndex(index)}
-              />
-            ))}
-          </div>
+          {visibleProducts.length > 1 && (
+            <div className="flex justify-center gap-2 mt-4">
+              {visibleProducts.map((_, index) => (
+                <button
+                  key={`product-dot-${index}`}
+                  type="button"
+                  className={`h-2 rounded-full transition-all duration-300 ${index === activeProductIndex ? 'w-8 bg-brand-lavender' : 'w-2 bg-white/30'
+                    }`}
+                  aria-label={`Go to product card ${index + 1}`}
+                  onClick={() => scrollToProductIndex(index)}
+                />
+              ))}
+            </div>
+          )}
           <div className="flex justify-center mt-8">
             <Link href="/contact" className="brand-cta text-sm bg-brand-lavender hover:bg-brand-lavender-dark text-black px-6 py-3 rounded-full">
-              Build me a GPT →
+              Get Dev Help →
             </Link>
           </div>
-        </section>
-        <div className="h-16" aria-hidden="true" />
-      </div>
+          <section className="mb-8">
+            <h3 className="text-3xl mt-12 mb-1 tracking-[0.15em] uppercase text-center">Custom GPTs</h3>
+            <p className="brand-section-subhead text-brand-lavender text-sm text-center mt-4">
+              [ Requires ChatGPT Account ]
+            </p>
+
+            <div className="flex justify-center mt-6">
+              <CarouselNavigationButtons
+                onPrev={handlePrevGpt}
+                onNext={handleNextGpt}
+                isVisible={gptProducts.length > 0}
+                ariaLabelPrev="Previous GPT card"
+                ariaLabelNext="Next GPT card"
+              />
+            </div>
+            <div
+              className="overflow-x-auto pb-4 pt-2 products-scroll scrollbar-lavender dot-scroll mt-8"
+              ref={gptScrollRef}
+            >
+              <div className="flex gap-4 snap-x snap-mandatory">
+                {gptProducts.map((product, index) => (
+                  <div
+                    key={`gpt-${product.title}-${index}`}
+                    className="brand-card min-w-[260px] max-w-xs text-white snap-center flex-shrink-0"
+                    data-gpt-card
+                  >
+                    <div className="p-4 flex flex-col flex-grow">
+                      <h4 className="text-lg font-semibold mb-2 text-brand-lavender">{product.title}</h4>
+                      <p className="text-sm text-gray-300 mb-4 flex-grow">
+                        {product.description}
+                      </p>
+                      <a
+                        href={product.link}
+                        className="brand-cta-sm bg-brand-lavender hover:bg-brand-lavender-dark text-black"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Start Chat →
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="flex justify-center gap-2 mt-6">
+              {gptProducts.map((_, index) => (
+                <button
+                  key={`gpt-dot-${index}`}
+                  type="button"
+                  className={`h-2 rounded-full transition-all duration-300 ${index === activeGptIndex ? 'w-8 bg-brand-lavender' : 'w-2 bg-white/30'
+                    }`}
+                  aria-label={`Go to GPT card ${index + 1}`}
+                  onClick={() => scrollToGptIndex(index)}
+                />
+              ))}
+            </div>
+            <div className="flex justify-center mt-8">
+              <Link href="/contact" className="brand-cta text-sm bg-brand-lavender hover:bg-brand-lavender-dark text-black px-6 py-3 rounded-full">
+                Build me a GPT →
+              </Link>
+            </div>
+          </section>
+          <div className="h-16" aria-hidden="true" />
+        </div>
       </section>
     </div>
   );
